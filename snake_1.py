@@ -2,7 +2,7 @@ import pygame
 import time
 pygame.init()
 
-screen = pygame.display.set_mode((1000, 750))
+screen = pygame.display.set_mode((1000, 720))
 game_icon = pygame.image.load('snake_icon.png')
 pygame.display.set_icon(game_icon)
 pygame.display.set_caption("Snake game - by Joseph Wong")

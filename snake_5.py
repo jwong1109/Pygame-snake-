@@ -16,6 +16,16 @@ green = (188, 227, 199)
 # Fonts for the game
 score_font = pygame.font.SysFont("arialblack", 20)
 exit_font = pygame.font.Font("freesansbold.ttf", 30)
+msg_font = pygame.font.SysFont("arialblack", 20)
+
+
+def message(msg, txt_colour, bkgd_colour):
+    txt = msg_font.render(msg, True, txt_colour, bkgd_colour)
+
+    # Centre rectangle: 1000/2 = 500 and 720/2 = 360
+    text_box = txt.get_rect(center=(500, 360))
+    screen.blit(txt, text_box)
+
 
 clock = pygame.time.Clock()  # sets the speed at which the snake moves
 
@@ -47,6 +57,9 @@ while not quit_game:
                 snake_x_change = 0
                 snake_y_change = 20
 
+    if snake_x >= 1000 or snake_x < 0 or snake_y >= 720 or snake_y < 0:
+        quit_game = True
+
     snake_x += snake_x_change
     snake_y += snake_y_change
 
@@ -58,6 +71,10 @@ while not quit_game:
 
     clock.tick(5)  # sets the speed at which each iteration of the game loop
     # runs in frames per second (fps). In this case it is set to 5fps
+
+message("The snake has died!", black, white)
+pygame.display.update()
+time.sleep(3)
 
 pygame.quit()
 quit()
